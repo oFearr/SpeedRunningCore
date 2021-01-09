@@ -19,6 +19,7 @@ public class GameStarterEventSuit implements Listener {
 
         if(SpeedRunningCore.gameStarted == false){
             SpeedRunningCore.playerTracker.add(player.getUniqueId());
+            SpeedRunningCore.playerDiamonds.put(player.getUniqueId(), 0);
         }
     }
 
@@ -52,7 +53,7 @@ public class GameStarterEventSuit implements Listener {
         }
 
         if(SpeedRunningCore.gameStarted == true && e.getBlock().getType() == Material.DIAMOND_ORE){
-            int plusDia = SpeedRunningCore.playerDiamonds.get(player.getUniqueId()) + 1;
+            int plusDia = SpeedRunningCore.playerDiamonds.get(player.getUniqueId()).intValue() + 1;
             SpeedRunningCore.playerDiamonds.put(player.getUniqueId(), plusDia);
         }
     }

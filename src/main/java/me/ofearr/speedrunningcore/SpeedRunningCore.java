@@ -72,7 +72,7 @@ public final class SpeedRunningCore extends JavaPlugin {
                     player.sendMessage(TranslateColour("&cInsufficient Permission!"));
                 } else {
                     Player target = Bukkit.getPlayer(args[0]);
-                    player.sendMessage(TranslateColour("&a" + args[0] + " has mined " + playerDiamonds.get(target.getUniqueId()) + " &3Diamonds."));
+                    player.sendMessage(TranslateColour("&a" + target.getName() + " has mined " + playerDiamonds.get(target.getUniqueId()) + " &3Diamonds&a."));
                 }
             }
         }
@@ -83,6 +83,11 @@ public final class SpeedRunningCore extends JavaPlugin {
                 if (!(player.hasPermission("speedrun.admin"))) {
                     player.sendMessage(TranslateColour("&cInsufficient Permission!"));
                 } else {
+
+                    for(Player p : Bukkit.getOnlinePlayers()){
+                        p.sendMessage(TranslateColour("&a " + player.getName() + " has started the game countdown!"));
+                    }
+
                     new BukkitRunnable(){
 
                         int runTimer = 5;
@@ -91,10 +96,10 @@ public final class SpeedRunningCore extends JavaPlugin {
                         public void run(){
 
                             for(Player p : Bukkit.getOnlinePlayers()){
-                                p.sendTitle(TranslateColour("&c&lGame Starting!"), TranslateColour( "&a&lin: " + runTimer + "s"));
+                                p.sendTitle(TranslateColour("&c&lGame Starting!"), TranslateColour( "&a&lStarting in: " + runTimer + "s"));
                             }
 
-                            if (runTimer == 1) {
+                            if (runTimer <= 0) {
                                 gameStarted = true;
                                 for(Player p : Bukkit.getOnlinePlayers()){
                                     p.sendTitle(TranslateColour("&c&lGame Starting!"), TranslateColour("&a&lGame has started!"));
