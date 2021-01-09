@@ -1,5 +1,8 @@
 package me.ofearr.speedrunningcore;
 
+import me.ofearr.speedrunningcore.Events.GameStarterEventSuit;
+import me.ofearr.speedrunningcore.Events.Teams;
+import me.ofearr.speedrunningcore.Events.WinnerEvents;
 import org.bukkit.*;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
@@ -28,6 +31,9 @@ public final class SpeedRunningCore extends JavaPlugin {
     @Override
     public void onEnable() {
         gameStarted = false;
+        Bukkit.getPluginManager().registerEvents(new GameStarterEventSuit(), this);
+        Bukkit.getPluginManager().registerEvents(new Teams(), this);
+        Bukkit.getPluginManager().registerEvents(new WinnerEvents(), this);
 
     }
 
