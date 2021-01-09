@@ -1,0 +1,14 @@
+name: SpeedRunningCore
+version: ${project.version}
+main: me.ofearr.speedrunningcore.SpeedRunningCore
+api-version: 1.16
+commands:
+  playerteamblue:
+    aliases: [teamblue]
+  playerteamred:
+    aliases: [teamred]
+  startrun:
+    aliases: [start]
+  playerdiamonds:
+    aliases: [diamonds]
+
